@@ -1,103 +1,402 @@
+"use client";
+
+import Link from "next/link";
+// import { getAllProducts } from "../../lib/queries/getAllProducts";
 import Image from "next/image";
+import { Nunito } from "next/font/google";
+import { CiSearch } from "react-icons/ci";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-export default function Home() {
+const products = [
+  {
+    imgPath: "Sneaker1",
+    brand: "Nike",
+    name: "Dunk Low Retro Sneakers",
+    price: "₦206,550.00",
+  },
+  {
+    imgPath: "Sneaker2",
+    brand: "Puma",
+    name: "RS-X3 Mesh Pop  Pink Sneaker ",
+    price: "₦399,874.21",
+  },
+  {
+    imgPath: "Sneaker3",
+    brand: "Nike",
+    name: "Renew Run 2 Running Sneaker",
+    price: "₦145,223.00",
+  },
+  {
+    imgPath: "Sneaker5",
+    brand: "Puma",
+    name: "Pelermo Unisex Sneaker",
+    price: "₦287,336.10",
+  },
+  {
+    imgPath: "Hat1",
+    brand: "Panama",
+    name: "Fedora Fashion Hats",
+    price: "₦19,350.62",
+  },
+  {
+    imgPath: "Hat2",
+    brand: "LD",
+    name: "Blue Trucker Hat",
+    price: "₦33,116.00",
+  },
+  {
+    imgPath: "Shirt1",
+    brand: "Force Majeure",
+    name: "White and Gray Unisex T-Shirt",
+    price: "₦49,110.31",
+  },
+  {
+    imgPath: "Shirt2",
+    brand: "Grunge",
+    name: "White Oversized Button-Up Shirt",
+    price: "₦37,821.50",
+  },
+];
+
+const bannerProducts = [
+  {
+    imgPath: "White Male and Female Models",
+
+    name: "Wrangler",
+  },
+  {
+    imgPath: "Brown Sneakers",
+
+    name: "Louis Vuitton X Nike",
+  },
+  {
+    imgPath: "Black Lady in Blue Shirt",
+
+    name: "Tory Burch",
+  },
+  {
+    imgPath: "Black Girl in Black Cardigan",
+
+    name: "Shein",
+  },
+];
+
+const reebokShoes = [
+  {
+    imgPath: "Reebok1.webp",
+    brand: "Reebok",
+    name: "Angel Reese 1 Basketball Shoes",
+    oldPrice: "230,687.90",
+    discount: 30,
+  },
+  {
+    imgPath: "Reebok2.webp",
+    brand: "Reebok",
+    name: "Club C Ground UK Shoes",
+    oldPrice: "155,074.30",
+    discount: 30,
+  },
+  {
+    imgPath: "Reebok3.webp",
+    brand: "Reebok",
+    name: "Engine A Basketball Shoes",
+    oldPrice: "211,500.00",
+    discount: 30,
+  },
+  {
+    imgPath: "Reebok4.webp",
+    brand: "Reebok",
+    name: "Pump Omni II Shoes",
+    oldPrice: "183,127.86",
+    discount: 30,
+  },
+];
+
+const nunito = Nunito({
+  weight: ["200", "300", "400", "600", "800", "1000"],
+  subsets: ["latin"],
+});
+
+const HomePage = () => {
+  // const products = await getAllProducts();
+  const [insetIndex, setInsetIndex] = useState<null | number>(null);
+  const [showInset, setShowInset] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const displayInset = (i: number | null) => {
+    setInsetIndex(i);
+  };
+
+  if (!isMounted) return null;
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <section className={`${nunito.className}`}>
+      <nav className={` ${nunito.className} flex gap-4 ml-10 mb-8`}>
+        <Link className="text-3xl font-semibold" href="#">
+          Must Have
+        </Link>
+        <Link className="text-3xl font-semibold" href="#">
+          Most Popular
+        </Link>
+        <Link className="text-3xl font-semibold" href="#">
+          Sale
+        </Link>
+      </nav>
+      <section className="grid grid-cols-4 gap-8 px-10">
+        {products.map(({ imgPath, brand, name, price }, i) => (
+          <div
+            onMouseEnter={() => {
+              displayInset(i);
+              setShowInset(true);
+            }}
+            onMouseLeave={() => {
+              displayInset(null);
+              setShowInset(false);
+            }}
+            className={`flex cursor-pointer ${nunito.className} relative flex-col`}
+            key={i}
+          >
+            <Link className="cursor-pointer" href="#">
+              <motion.div
+                className="w-70 perspective-[1000px] relative rounded-xl overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+              >
+                <motion.img
+                  className="w-full object-cover"
+                  src={`/assets/${imgPath}.jpg`}
+                  width={200}
+                  height={200}
+                  alt={name}
+                  animate={{
+                    scale: showInset && insetIndex === i ? 1.1 : 1,
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+                {isMounted && (
+                  <AnimatePresence mode="wait">
+                    {showInset && insetIndex === i && (
+                      <motion.div
+                        key={`overlay-${i}`} //
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <motion.div
+                          className="absolute bg-black rounded-full w-13 justify-center items-center h-13 flex top-5 right-6"
+                          initial={{ x: 20, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: 20, opacity: 0 }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          <CiSearch strokeWidth={1.5} size={30} color="white" />
+                        </motion.div>
+
+                        <motion.div
+                          className="absolute w-full bottom-6 px-7"
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: 20, opacity: 0 }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          <button className="bg-black cursor-pointer text-white font-semibold w-full rounded-lg py-3">
+                            SHOP NOW
+                          </button>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+              </motion.div>
+            </Link>
+
+            <div className="flex flex-col gap-1 mt-4">
+              <Link href="#">
+                <p className="tracking-wide text-gray-500">{brand}</p>
+              </Link>
+              <Link href="#">
+                <p className="font-bold">{name}</p>
+              </Link>
+              <Link href="#">
+                <p className="font-extrabold">{price}</p>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </section>
+      <section className={`bg-[#C4C4C3] flex h-63 w-full px-10 mb-10 mt-9`}>
+        <div className="flex justify-center flex-1/3 gap-6 flex-col ">
+          <p className="font-bold tracking-wider text-sm uppercase">
+            Beyond basics - essentials, sharpened to distinction.
+          </p>
+          <p className="font-bold text-2xl">ICONIC STYLES</p>
+          <p className="text-lg">
+            Step into our refined collection – pieces built for those who pair
+            simplicity with edge.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="flex-2/3 flex gap-5 justify-end items-center">
+          {bannerProducts.map(({ imgPath, name }, i) => (
+            <Link key={i} href="#">
+              <div className="flex items-center flex-col gap-6">
+                <div className="w-40 rounded-lg overflow-hidden">
+                  <motion.img
+                    className="w-full object-cover"
+                    src={`/assets/${imgPath}.jpg`}
+                    width={200}
+                    height={200}
+                    alt={name}
+                    whileHover={{
+                      scale: 1.1,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
+                <p className="text-2xl font-semibold whitespace-normal mt-6 tracking-wider">
+                  {name}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <section className="">
+        <h3 className="font-bold text-3xl text-center uppercase">
+          This Season's Fire
+        </h3>
+        <nav className="flex gap-4 mb-8 ml-10 mt-7">
+          <Link className="text-3xl font-semibold" href="#">
+            REEBOK
+          </Link>
+          <Link className="text-3xl text-gray-500 font-semibold" href="#">
+            PUMA
+          </Link>
+          <Link className="text-3xl text-gray-500 font-semibold" href="#">
+            EYTYS
+          </Link>
+          <Link className="text-3xl text-gray-500 font-semibold" href="#">
+            ROMBAUT
+          </Link>
+        </nav>
+        <section className="grid grid-cols-4 gap-8 px-10">
+          {reebokShoes.map(
+            ({ imgPath, brand, name, oldPrice, discount }, i) => {
+              const calcPrice = (
+                (discount / 100) *
+                Number(oldPrice.replace(/,/g, ""))
+              ).toFixed(2);
+              const newPrice = Number(calcPrice).toLocaleString("en-Ng", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              });
+              return (
+                <div
+                  onMouseEnter={() => {
+                    displayInset(i);
+                    setShowInset(true);
+                  }}
+                  onMouseLeave={() => {
+                    displayInset(null);
+                    setShowInset(false);
+                  }}
+                  className={`flex cursor-pointer ${nunito.className} relative flex-col`}
+                  key={i}
+                >
+                  <Link className="cursor-pointer" href="#">
+                    <motion.div
+                      className="w-70 perspective-[1000px] relative rounded-xl overflow-hidden"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <motion.img
+                        className="w-full object-cover"
+                        src={`/assets/${imgPath}`}
+                        width={200}
+                        height={200}
+                        alt={name}
+                        animate={{
+                          scale: showInset && insetIndex === i ? 1.1 : 1,
+                        }}
+                        transition={{ duration: 0.3 }}
+                      />
+
+                      {/* Discount Badge */}
+                      <div className="absolute px-2 rounded-lg left-5 top-5 bg-red-600 text-sm font-bold text-white">
+                        -{discount}%
+                      </div>
+
+                      {/* Hover Overlay */}
+                      {isMounted && (
+                        <AnimatePresence mode="wait">
+                          {showInset && insetIndex === i && (
+                            <motion.div
+                              key={`overlay-${i}`}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <motion.div
+                                className="absolute bg-black rounded-full w-13 justify-center items-center h-13 flex top-5 right-6"
+                                initial={{ x: 20, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                exit={{ x: 20, opacity: 0 }}
+                                transition={{ duration: 0.4 }}
+                              >
+                                <CiSearch
+                                  strokeWidth={1.5}
+                                  size={30}
+                                  color="white"
+                                />
+                              </motion.div>
+
+                              <motion.div
+                                className="absolute w-full bottom-6 px-7"
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: 20, opacity: 0 }}
+                                transition={{ duration: 0.4 }}
+                              >
+                                <button className="bg-black cursor-pointer text-white font-semibold w-full rounded-lg py-3">
+                                  SHOP NOW
+                                </button>
+                              </motion.div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      )}
+                    </motion.div>
+                  </Link>
+
+                  {/* Product Details */}
+                  <div className="flex flex-col gap-1 mt-4">
+                    <Link href="#">
+                      <p className="tracking-wide text-gray-500">{brand}</p>
+                    </Link>
+                    <Link href="#">
+                      <p className="font-bold">{name}</p>
+                    </Link>
+                    <Link href="#" className="flex gap-2">
+                      <p className="font-extrabold text-red-500">₦{newPrice}</p>
+                      <p className="font-semibold text-gray-500 line-through">
+                        ₦{oldPrice}
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              );
+            }
+          )}
+        </section>
+      </section>
+    </section>
   );
-}
+};
+
+export default HomePage;
