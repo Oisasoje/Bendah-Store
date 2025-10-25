@@ -215,7 +215,7 @@ const HomePage = () => {
       >
         <div className="flex px-10 justify-between w-full items-center">
           <Link
-            className="text-3xl  bg-clip-text bg-gradient-to-r text-transparent from-black to-gray-400 "
+            className="text-3xl  bg-clip-text bg-linear-to-r text-transparent from-black to-gray-400 "
             href="#"
           >
             <span className="flex border-4 rounded-xl border-red-600 p-3 items-center gap-1">
