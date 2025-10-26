@@ -26,6 +26,6 @@ const QUERY = `
 `;
 
 export async function getProductByHandle(handle: string) {
-  const data = await shopifyFetch<{ product: any }>(QUERY, { handle });
+  const data = await shopifyFetch<{ product: unknown }>(QUERY, { handle });
   return data.product;
 }

@@ -664,7 +664,7 @@ const HomePage = () => {
         </section>
         <section className="">
           <h3 className="font-bold text-3xl text-center uppercase">
-            This Season's Fire
+            This Season&apos;s Fire
           </h3>
           <nav className="flex gap-10 mb-8 ml-10 mt-7">
             <Link className="text-3xl font-semibold" href="#">
@@ -794,7 +794,7 @@ const HomePage = () => {
           </section>
           <section className=" mx-10 mt-20 mb-15 ">
             <h3 className="uppercase mb-8 font-extrabold text-3xl">
-              This Week's Drop
+              This Week&apos;s Drop
             </h3>
             <Swiper
               key="rombaut-shoes-swiper"
@@ -949,7 +949,7 @@ const HomePage = () => {
         <span className="flex gap-1 items-center mt-6">
           <p className="text-xl">&#169;</p>
           <p className="text-lg  tracking-wide font-semibold">
-            2025 Victor | Built with Next.js + Shopify's StoreFront API
+            2025 Victor | Built with Next.js + Shopify&apos;s StoreFront API
           </p>
         </span>
       </footer>

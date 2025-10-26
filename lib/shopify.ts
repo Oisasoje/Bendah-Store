@@ -1,4 +1,4 @@
-type Variables = Record<string, any>;
+type Variables = Record<string, unknown>;
 
 export async function shopifyFetch<T>(
   query: string,
