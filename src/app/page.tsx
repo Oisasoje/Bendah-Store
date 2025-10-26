@@ -9,20 +9,18 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import { getAllProducts } from "../../lib/queries/getAllProducts";
 import Image from "next/image";
-import { Nunito, Anton, Playfair_Display } from "next/font/google";
+import { Nunito, Anton } from "next/font/google";
 import { CiCircleCheck, CiDollar, CiSearch, CiUser } from "react-icons/ci";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { IoBagOutline } from "react-icons/io5";
 import {
   FaAngleDown,
-  FaAngleLeft,
   FaAngleRight,
   FaFacebook,
   FaInstagram,
-  FaTwitter,
 } from "react-icons/fa";
-import { BsBoxSeam, BsTwitterX } from "react-icons/bs";
+import { BsBoxSeam } from "react-icons/bs";
 import { LuSparkle } from "react-icons/lu";
 import { FaX, FaXTwitter } from "react-icons/fa6";
 import { IoIosSearch } from "react-icons/io";
@@ -33,10 +31,6 @@ const nunito = Nunito({
 });
 const anton = Anton({
   weight: ["400"],
-  subsets: ["latin"],
-});
-const playfairDisplay = Playfair_Display({
-  weight: ["400", "600", "800", "500"],
   subsets: ["latin"],
 });
 
@@ -342,19 +336,18 @@ const HomePage = () => {
               )}
             </div>
 
-            {/* Search Results */}
             <div className="flex-1 overflow-y-auto">
               {searchTerm && (
                 <div className="mb-4">
                   <p className="text-gray-600 text-sm">
                     Found {filteredProducts.length} product
-                    {filteredProducts.length !== 1 ? "s" : ""} for "{searchTerm}
-                    "
+                    {filteredProducts.length !== 1 ? "s" : ""} for &quot;
+                    {searchTerm}
+                    &quot;
                   </p>
                 </div>
               )}
 
-              {/* Products List */}
               <div className="space-y-3">
                 {filteredProducts.map((product, index) => {
                   const src = product.imgPath.trimEnd();
@@ -376,7 +369,6 @@ const HomePage = () => {
                           />
                         </div>
 
-                        {/* Product Info */}
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold text-gray-900 text-sm truncate">
                             {product.name}
@@ -402,7 +394,7 @@ const HomePage = () => {
                 >
                   <div className="text-4xl mb-3">😕</div>
                   <p className="text-gray-500 text-sm mb-2">
-                    No products found for "{searchTerm}"
+                    No products found for &quot;{searchTerm}&quot;
                   </p>
                   <p className="text-gray-400 text-xs">
                     Try different keywords
@@ -432,13 +424,13 @@ const HomePage = () => {
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="absolute hover:cursor-zoom-in top-0 left-0 z-101 min-h-screen w-full bg-black/40"
+          className="absolute hover:cursor-zoom-out top-0 left-0 z-101 min-h-screen w-full bg-black/40"
         />
       )}
       <header
         className={`top-0  left-0 right-0 flex items-center py-7 bg-white transition-shadow z-100 duration-300 ${
           scrolled ? "shadow-md" : ""
-        } pt-10 fixed ${window.scrollY > 0 ? "shadow-2xs" : ""}  `}
+        } pt-10 fixed`}
       >
         <div className="flex px-10 justify-between w-full items-center">
           <Link
@@ -496,7 +488,9 @@ const HomePage = () => {
               <motion.img
                 className="w-100 object-cover cursor-pointer rounded-lg overflow-hidden"
                 src={`/assets/${imgPath}`}
+                initial={{ y: 20, opacity: 0 }}
                 whileHover={{ scale: 1.06 }}
+                whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
               />
               <p className="text-xl font-bold tracking-wider uppercase">
@@ -505,7 +499,7 @@ const HomePage = () => {
             </div>
           ))}
         </section>
-        <div className="overflow-hidden whitespace-nowrap bg-black text-white py-4 mb-10">
+        <div className="overflow-hidden whitespace-nowrap  text-black border border-gray-400 p-2 mt-4 mb-10">
           <div className="flex animate-marquee">
             <span className="mx-8 text-lg font-semibold">
               {"GET 10% OFF ON YOUR FIRST ORDER — ".repeat(8)}
