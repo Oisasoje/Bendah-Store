@@ -210,7 +210,7 @@ const HomePage = () => {
                     }}
                     transition={{ duration: 0.3 }}
                   />
-                  <div className="block bg-white w-fit p-2.5 rounded-full md:hidden absolute bottom-2 left-3">
+                  <div className="block bg-white shadow-black shadow-2xl w-fit p-2.5 rounded-full md:hidden absolute bottom-2 left-3">
                     <FaBagShopping className="" size={30} color="black" />
                   </div>
 
@@ -358,7 +358,7 @@ const HomePage = () => {
                       }}
                       transition={{ duration: 0.3 }}
                     />
-                    <div className="block bg-white w-fit p-2.5 rounded-full md:hidden absolute bottom-2 left-3">
+                    <div className="block bg-white w-fit p-2.5 rounded-full shadow-2xl shadow-black md:hidden absolute bottom-2 left-3">
                       <FaBagShopping className="" size={30} color="black" />
                     </div>
                     <div className="absolute px-2 rounded-lg left-4 top-4 bg-red-600 text-xs sm:text-sm font-bold text-white">
