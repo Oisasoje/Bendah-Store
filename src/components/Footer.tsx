@@ -11,27 +11,35 @@ const nunito = Nunito({
 const Footer = () => {
   return (
     <footer
-      className={`bg-[#C4C4C3] pt-20 pb-20 w-full h-full ${nunito.className}  px-15`}
+      className={`bg-[#C4C4C3] w-full py-16 sm:py-20 px-6 sm:px-10 md:px-20 ${nunito.className}`}
     >
-      <div className="justify-between flex gap-10 ">
-        <section className="text-nowrap mt-4 flex flex-col">
-          <p className="text-3xl mb-1 font-semibold tracking-wide">
+      {/* Top Section */}
+      <div className="flex flex-col lg:flex-row justify-between gap-12">
+        {/* Newsletter */}
+        <section className="flex-1 flex flex-col text-wrap">
+          <p className="text-2xl sm:text-3xl mb-2 font-semibold tracking-wide">
             Subscribe to our Newsletter
           </p>
-          <p className="text-sm mb-8">
+          <p className="text-sm sm:text-base mb-6 text-gray-800">
             Get the latest updates on new products & upcoming sales
           </p>
-          <div className=" relative flex items-center w-full mb-4">
+
+          <div className="relative flex items-center w-full mb-4">
             <input
               type="email"
-              className="bg-white focus:ring-2 focus:ring-red-400 transition-all focus:ring-offset-2 py-3 px-5 outline-none w-full  rounded-xl"
+              placeholder="Enter your email"
+              className="bg-white text-sm sm:text-base py-3 px-5 w-full rounded-xl outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 transition-all"
             />
-            <span className="p-2 absolute hover:bg-black transition-colors duration-500 hover:text-white  cursor-pointer right-2">
+            <button
+              aria-label="Subscribe"
+              className="absolute right-2 p-2 rounded-md text-gray-700 hover:bg-black hover:text-white transition-colors duration-300"
+            >
               <FaAngleRight size={20} />
-            </span>
+            </button>
           </div>
-          <p className="text-sm mb-3">
-            By subscribing you agree to the{" "}
+
+          <p className="text-xs sm:text-sm mb-3 text-gray-700">
+            By subscribing, you agree to the{" "}
             <span className="underline cursor-pointer underline-offset-3">
               Terms of Use
             </span>{" "}
@@ -41,50 +49,99 @@ const Footer = () => {
             </span>
             .
           </p>
-          <p className="text-sm">
+          <p className="text-xs sm:text-sm text-gray-800">
             Thomas Balogun Street, 202333 Lagos LA, Nigeria
           </p>
         </section>
-        <section className="flex gap-3  flex-col">
-          <p className="font-semibold">Bendah Store</p>
-          <Link href="#">About</Link>
-          <Link href="#">Locations</Link>
-        </section>
-        <section className=" flex gap-3  flex-col">
-          <p className="font-semibold">Contact</p>
-          <Link href="#">FAQs</Link>
-          <Link href="#">Shipping Policy</Link>
-          <Link href="#">Terms & Conditions</Link>
-        </section>
-        <section className=" flex gap-3 flex-col">
-          <p className="font-semibold">Shop</p>
-          <Link href="#">Puma</Link>
-          <Link href="#">Nike</Link>
-          <Link href="#">Rombaut</Link>
-          <Link href="#">Panama</Link>
-          <Link href="#">Grunge</Link>
-        </section>
-        <section className=" flex gap-3 flex-col">
-          <p className="font-semibold">Latest Edits</p>
-          <Link href="#">Sports</Link>
-          <Link href="#">Summer</Link>
-          <Link href="#">Fashion</Link>
-          <Link href="#">Lifestyle</Link>
-          <Link href="#">Most Popular</Link>
-          <Link href="#">New In</Link>
-        </section>
+
+        {/* Link Columns */}
+        <div className="flex flex-wrap justify-between gap-4 flex-[1.5]">
+          <section className="flex flex-col gap-2 min-w-[120px]">
+            <p className="font-bold mb-2 text-black">Bendah Store</p>
+            <Link href="#" className="hover:underline">
+              About
+            </Link>
+            <Link href="#" className="hover:underline">
+              Locations
+            </Link>
+          </section>
+
+          <section className="flex flex-col gap-2 min-w-[140px]">
+            <p className="font-bold mb-2 text-black">Contact</p>
+            <Link href="#" className="hover:underline">
+              FAQs
+            </Link>
+            <Link href="#" className="hover:underline">
+              Shipping Policy
+            </Link>
+            <Link href="#" className="hover:underline">
+              Terms & Conditions
+            </Link>
+          </section>
+
+          <section className="flex flex-col gap-2 min-w-[120px]">
+            <p className="font-bold mb-2 text-black">Shop</p>
+            <Link href="#" className="hover:underline">
+              Puma
+            </Link>
+            <Link href="#" className="hover:underline">
+              Nike
+            </Link>
+            <Link href="#" className="hover:underline">
+              Rombaut
+            </Link>
+            <Link href="#" className="hover:underline">
+              Panama
+            </Link>
+            <Link href="#" className="hover:underline">
+              Grunge
+            </Link>
+          </section>
+
+          <section className="flex flex-col gap-2 min-w-[140px]">
+            <p className="font-bold mb-2 text-black">Latest Edits</p>
+            <Link href="#" className="hover:underline">
+              Sports
+            </Link>
+            <Link href="#" className="hover:underline">
+              Summer
+            </Link>
+            <Link href="#" className="hover:underline">
+              Fashion
+            </Link>
+            <Link href="#" className="hover:underline">
+              Lifestyle
+            </Link>
+            <Link href="#" className="hover:underline">
+              Most Popular
+            </Link>
+            <Link href="#" className="hover:underline">
+              New In
+            </Link>
+          </section>
+        </div>
       </div>
-      <section className="flex mt-15 gap-5">
-        <FaFacebook size={25} />
-        <FaXTwitter size={25} />
-        <FaInstagram size={25} />
-      </section>
-      <span className="flex gap-1 items-center mt-6">
-        <p className="text-xl">&#169;</p>
-        <p className="text-lg  tracking-wide font-semibold">
-          2025 Victor | Built with Next.js + Shopify&apos;s StoreFront API
-        </p>
-      </span>
+
+      {/* Divider */}
+      <hr className="my-10 border-gray-400" />
+
+      {/* Bottom Section */}
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
+        {/* Socials */}
+        <div className="flex gap-5 text-gray-700">
+          <FaFacebook size={25} className="cursor-pointer hover:opacity-70" />
+          <FaXTwitter size={25} className="cursor-pointer hover:opacity-70" />
+          <FaInstagram size={25} className="cursor-pointer hover:opacity-70" />
+        </div>
+
+        {/* Copyright */}
+        <div className="flex items-center gap-2 text-center justify-center sm:text-left">
+          <p className=" tracking-wide font-semibold">
+            &#169; 2025 Victor | Built with Next.js + Shopify&apos;s Storefront
+            API
+          </p>
+        </div>
+      </div>
     </footer>
   );
 };

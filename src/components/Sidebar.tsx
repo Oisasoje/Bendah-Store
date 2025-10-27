@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { FaX } from "react-icons/fa6";
 import { IoIosSearch } from "react-icons/io";
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ setIsOpen }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredProducts = useMemo(() => {
@@ -30,7 +30,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   return (
     <motion.aside
-      className="fixed text-black z-150 px-6 pt-5 py-8 bg-white top-0 right-0 h-screen w-7/20 flex flex-col"
+      className="fixed text-black z-150 px-6 pt-5 py-8 bg-white top-0 right-0 h-screen md:w-7/20 w-full flex flex-col"
       initial={{ x: "100%" }}
       animate={{ x: "0%" }}
       exit={{ x: "100%" }}

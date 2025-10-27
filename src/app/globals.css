@@ -9,7 +9,22 @@
   opacity: 0.8;
 }
 
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
+
 .image-blur {
   filter: blur(20px);
   transition: filter 0.3s ease-out;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
 }
