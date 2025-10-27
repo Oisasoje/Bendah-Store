@@ -39,7 +39,7 @@ const Header = ({ setIsOpen }) => {
         scrolled ? "shadow-md" : ""
       }`}
     >
-      <div className="flex  items-center justify-between w-full px-4 sm:px-6 md:px-10 py-10">
+      <div className="flex  items-center justify-between w-full px-4 sm:px-6 md:px-10 py-4 md:py-10">
         {/* MOBILE LEFT SECTION */}
         <button className="md:hidden z-10" onClick={() => setMenuOpen(true)}>
           {!menuOpen && <RxHamburgerMenu size={26} />}

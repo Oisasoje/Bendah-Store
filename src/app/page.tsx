@@ -25,6 +25,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import LazySwiper from "@/components/LazySwiper";
+import { FaBagShopping } from "react-icons/fa6";
 
 const nunito = Nunito({
   weight: ["200", "300", "400", "600", "800", "1000"],
@@ -90,14 +91,14 @@ const HomePage = () => {
 
       <Header setIsOpen={setIsOpen} />
 
-      <main className={`${nunito.className} pt-24 md:pt-40`}>
+      <main className={`${nunito.className} pt-35 md:pt-40`}>
         {/* ===== Categories ===== */}
         <section
           className="px-4 sm:px-6 md:px-10 mb-10 text-black 
   flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide
   md:grid md:grid-cols-4 lg:grid-cols-6 md:gap-10 md:overflow-visible"
         >
-          {categories.map(({ imgPath, category, blurDataURL }, i) => (
+          {categories.map(({ imgPath, category }, i) => (
             <div
               className="shrink-0 flex flex-col items-center gap-4 w-[150px] sm:w-[180px] md:w-auto  snap-center"
               key={i}
@@ -115,7 +116,6 @@ const HomePage = () => {
                   alt={category}
                   width={200}
                   height={200}
-                  blurDataURL={blurDataURL}
                   priority={i >= 0}
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
@@ -210,6 +210,9 @@ const HomePage = () => {
                     }}
                     transition={{ duration: 0.3 }}
                   />
+                  <div className="block bg-white w-fit p-2.5 rounded-full md:hidden absolute bottom-2 left-3">
+                    <FaBagShopping className="" size={30} color="black" />
+                  </div>
 
                   {isMounted && (
                     <AnimatePresence mode="wait">
@@ -222,7 +225,7 @@ const HomePage = () => {
                           transition={{ duration: 0.3 }}
                         >
                           <motion.div
-                            className="absolute bg-black rounded-full w-12 h-12 flex justify-center items-center top-4 right-5"
+                            className="absolute hidden bg-black rounded-full w-12 h-12 md:flex justify-center items-center top-4 right-5"
                             initial={{ x: 20, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: 20, opacity: 0 }}
@@ -236,7 +239,7 @@ const HomePage = () => {
                           </motion.div>
 
                           <motion.div
-                            className="absolute w-full bottom-6 px-5"
+                            className="absolute md:block hidden w-full bottom-6 px-5"
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 20, opacity: 0 }}
@@ -355,7 +358,9 @@ const HomePage = () => {
                       }}
                       transition={{ duration: 0.3 }}
                     />
-
+                    <div className="block bg-white w-fit p-2.5 rounded-full md:hidden absolute bottom-2 left-3">
+                      <FaBagShopping className="" size={30} color="black" />
+                    </div>
                     <div className="absolute px-2 rounded-lg left-4 top-4 bg-red-600 text-xs sm:text-sm font-bold text-white">
                       -{discount}%
                     </div>
@@ -371,7 +376,7 @@ const HomePage = () => {
                             transition={{ duration: 0.3 }}
                           >
                             <motion.div
-                              className="absolute bg-black rounded-full w-12 h-12 flex justify-center items-center top-4 right-5"
+                              className="absolute bg-black rounded-full w-12 h-12 md:flex hidden justify-center items-center top-4 right-5"
                               initial={{ x: 20, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               exit={{ x: 20, opacity: 0 }}
@@ -385,7 +390,7 @@ const HomePage = () => {
                             </motion.div>
 
                             <motion.div
-                              className="absolute w-full bottom-6 px-5"
+                              className="absolute md:block hidden w-full bottom-6 px-5"
                               initial={{ y: 20, opacity: 0 }}
                               animate={{ y: 0, opacity: 1 }}
                               exit={{ y: 20, opacity: 0 }}
@@ -474,6 +479,9 @@ const HomePage = () => {
                       Order This Product
                     </button>
                   </div>
+                  <p className="block md:hidden text-center">{`<  ${i + 1}/${
+                    rombautShoes.length
+                  } >`}</p>
                 </div>
               </SwiperSlide>
             ))}
