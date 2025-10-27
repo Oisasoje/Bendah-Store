@@ -8,3 +8,8 @@
 .swiper-button-prev:hover {
   opacity: 0.8;
 }
+
+.image-blur {
+  filter: blur(20px);
+  transition: filter 0.3s ease-out;
+}
