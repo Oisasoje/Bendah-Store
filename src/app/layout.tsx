@@ -18,9 +18,16 @@ const geistMono = Geist_Mono({
   content="width=device-width, initial-scale=1, minimum-scale=1"
 />;
 
-export const metadata: Metadata = {
-  title: "Bendah Store",
-  description: "Demo Store Created With Nextjs and Shopify's StoreFrontApi",
+// In your layout.tsx or page.tsx
+export const metadata = {
+  title: "Bendah Store - Premium Fashion & Streetwear",
+  description:
+    "Discover premium fashion at Bendah Store. Shop the latest trends in clothing, shoes and accessories with free shipping and 14-day returns.",
+  openGraph: {
+    title: "Bendah Store - Premium Fashion",
+    description: "Shop the latest fashion trends",
+    images: ["/assets/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -69,7 +76,7 @@ export default function RootLayout({
         />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} pt-20 ${geistMono.variable} antialiased`}
       >
         {children}
       </body>

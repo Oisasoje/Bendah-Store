@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
-/* In your global CSS */
-
-html,
-body {
+/* Reset and base styles */
+html {
+  overflow-y: scroll; /* Force scrollbar to always show */
   height: 100%;
+}
+
+body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 #__next {
@@ -19,6 +22,7 @@ main {
   flex: 1 0 auto;
 }
 
+/* Mobile fixes */
 @media screen and (max-device-width: 767px) {
   .force-column {
     flex-direction: column !important;
@@ -27,6 +31,7 @@ main {
   }
 }
 
+/* Swiper styles */
 .swiper-button-next,
 .swiper-button-prev {
   color: gray !important;
@@ -44,15 +49,43 @@ main {
   }
 }
 
+/* Image blur effect */
 .image-blur {
   filter: blur(20px);
   transition: filter 0.3s ease-out;
 }
 
+/* Scrollbar hide utility */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-hide {
   scrollbar-width: none;
+}
+
+/* CUSTOM SCROLLBAR - THICK VERSION */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 16px; /* Thick scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 8px;
+    border: 3px solid #ffffff;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #333333;
+  }
+
+  html {
+    scrollbar-width: auto;
+    scrollbar-color: #000000 #ffffff;
+  }
 }

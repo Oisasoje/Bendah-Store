@@ -24,14 +24,25 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import LazySwiper from "@/components/LazySwiper";
+
 import { FaBagShopping } from "react-icons/fa6";
+import dynamic from "next/dynamic";
 
 const nunito = Nunito({
   weight: ["400", "600"],
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
+const LazySwiper = dynamic(() => import("@/components/LazySwiper"), {
+  loading: () => (
+    <div className="h-96 bg-gray-100 animate-pulse rounded-lg flex items-center justify-center">
+      Loading products...
+    </div>
+  ),
+  ssr: false,
+});
 const HomePage = () => {
   // const products = await getAllProducts();
   const [insetIndex, setInsetIndex] = useState<null | number>(null);
@@ -91,7 +102,7 @@ const HomePage = () => {
 
       <Header setIsOpen={setIsOpen} />
 
-      <main className={`${nunito.className} pt-35 md:pt-40`}>
+      <main className={`${nunito.className} pt-[140px] md:pt-[180px]`}>
         {/* ===== Categories ===== */}
         <section
           className="px-4 sm:px-6 md:px-10 mb-10 text-black 
@@ -108,13 +119,13 @@ const HomePage = () => {
                 initial={{ y: 20, opacity: 0 }}
                 whileHover={{ scale: 1.06 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.2 }}
               >
                 <Image
                   className="w-full object-cover"
                   src={`/assets/${imgPath}`}
                   alt={category}
-                  width={200}
+                  width={300}
                   height={200}
                   priority={i >= 0}
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
@@ -194,21 +205,18 @@ const HomePage = () => {
                 <motion.div
                   className="w-full perspective-[1000px] relative rounded-xl overflow-hidden"
                   whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <motion.img
+                  <Image
                     className="w-full image-blur object-cover"
                     src={`/assets/${imgPath}.jpg`}
-                    width={200}
+                    width={300}
                     height={200}
                     alt={name}
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     onLoad={(e) =>
                       e.currentTarget.classList.remove("image-blur")
                     }
-                    animate={{
-                      scale: showInset && insetIndex === i ? 1.06 : 1,
-                    }}
-                    transition={{ duration: 0.3 }}
                   />
                   <div className="block bg-white shadow-black shadow-2xl w-fit p-2.5 rounded-full md:hidden absolute bottom-2 left-3">
                     <FaBagShopping className="" size={30} color="black" />
@@ -222,14 +230,14 @@ const HomePage = () => {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <motion.div
                             className="absolute hidden bg-black rounded-full w-12 h-12 md:flex justify-center items-center top-4 right-5"
                             initial={{ x: 20, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: 20, opacity: 0 }}
-                            transition={{ duration: 0.4 }}
+                            transition={{ duration: 0.2 }}
                           >
                             <CiSearch
                               strokeWidth={1.5}
@@ -243,7 +251,7 @@ const HomePage = () => {
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 20, opacity: 0 }}
-                            transition={{ duration: 0.4 }}
+                            transition={{ duration: 0.2 }}
                           >
                             <button className="bg-black text-white font-semibold w-full rounded-lg py-3">
                               SHOP NOW
@@ -295,12 +303,13 @@ const HomePage = () => {
                   <div className="w-40 md:w-48 rounded-lg overflow-hidden">
                     {" "}
                     {/* Increased desktop size */}
-                    <motion.img
+                    <Image
                       className="w-full h-40 md:h-48 object-cover"
                       src={`/assets/${imgPath}`}
                       alt={name}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
+                      width={300}
+                      height={200}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
                   </div>
                   <p className="text-lg md:text-xl font-semibold whitespace-normal uppercase tracking-wider text-center">
@@ -342,21 +351,18 @@ const HomePage = () => {
                   <motion.div
                     className="w-full perspective-[1000px] relative rounded-xl overflow-hidden"
                     whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <motion.img
+                    <Image
                       className="w-full image-blur object-cover"
                       src={`/assets/${imgPath}`}
-                      width={200}
+                      width={300}
                       height={200}
                       alt={name}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       onLoad={(e) =>
                         e.currentTarget.classList.remove("image-blur")
                       }
-                      animate={{
-                        scale: showInset && insetIndex === i ? 1.06 : 1,
-                      }}
-                      transition={{ duration: 0.3 }}
                     />
                     <div className="block bg-white w-fit p-2.5 rounded-full shadow-2xl shadow-black md:hidden absolute bottom-2 left-3">
                       <FaBagShopping className="" size={30} color="black" />
@@ -373,14 +379,14 @@ const HomePage = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.2 }}
                           >
                             <motion.div
                               className="absolute bg-black rounded-full w-12 h-12 md:flex hidden justify-center items-center top-4 right-5"
                               initial={{ x: 20, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               exit={{ x: 20, opacity: 0 }}
-                              transition={{ duration: 0.4 }}
+                              transition={{ duration: 0.2 }}
                             >
                               <CiSearch
                                 strokeWidth={1.5}
@@ -394,7 +400,7 @@ const HomePage = () => {
                               initial={{ y: 20, opacity: 0 }}
                               animate={{ y: 0, opacity: 1 }}
                               exit={{ y: 20, opacity: 0 }}
-                              transition={{ duration: 0.4 }}
+                              transition={{ duration: 0.2 }}
                             >
                               <button className="bg-black text-white font-semibold w-full rounded-lg py-3">
                                 SHOP NOW
@@ -447,19 +453,16 @@ const HomePage = () => {
                       setShowInset(false);
                     }}
                   >
-                    <motion.img
+                    <Image
                       src={`/assets/${imgPath}`}
                       alt={name}
-                      width={200}
+                      width={300}
                       height={200}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       className="w-full image-blur object-cover"
                       onLoad={(e) => {
                         e.currentTarget.classList.remove("image-blur");
                       }}
-                      animate={{
-                        scale: showInset && insetIndex === i ? 1.06 : 1,
-                      }}
-                      transition={{ duration: 0.3 }}
                     />
                   </div>
                   <div className="flex w-full md:w-1/2 gap-6 md:gap-10 justify-between h-full  w flex-col">

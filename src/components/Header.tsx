@@ -35,7 +35,7 @@ const Header = ({ setIsOpen }) => {
   }, []);
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full  bg-white transition-shadow duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-1000 w-full  bg-white transition-shadow duration-300 ${
         scrolled ? "shadow-md" : ""
       }`}
     >
@@ -49,7 +49,7 @@ const Header = ({ setIsOpen }) => {
         <AnimatePresence>
           {menuOpen && (
             <motion.aside
-              className="md:hidden fixed pt-8 left-0 z-1000 h-full top-0 w-full flex flex-col gap-4  font-semibold bg-white shadow-inner"
+              className="md:hidden fixed pt-8 left-0 z-50 h-full top-0 w-full flex flex-col gap-4  font-semibold bg-white shadow-inner"
               initial={{ x: "-100%" }}
               animate={{ x: "0%" }}
               exit={{ x: "-100%" }}
