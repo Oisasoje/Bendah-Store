@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
+/* In your global CSS */
+
 html,
 body {
+  height: 100%;
   overflow-x: hidden;
 }
 body.overflow-hidden {

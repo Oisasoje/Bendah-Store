@@ -13,6 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, minimum-scale=1"
+/>;
+
 export const metadata: Metadata = {
   title: "Bendah Store",
   description: "Demo Store Created With Nextjs and Shopify's StoreFrontApi",
