@@ -274,9 +274,9 @@ const HomePage = () => {
         </section>
 
         {/* ===== Banner Section ===== */}
-        <section className="bg-[#C4C4C3] py-8 flex flex-col md:flex-row h-auto md:h-63 w-full px-6 sm:px-10 mb-10 mt-9">
+        <section className="bg-[#C4C4C3] py-8 flex flex-col md:flex-row w-full px-6 sm:px-10 mb-10 mt-9">
           {/* TEXT SECTION */}
-          <div className="flex flex-col flex-1 md:flex-[0.33] justify-center gap-6 text-center md:text-left mb-6 md:mb-0">
+          <div className="flex flex-col flex-1 justify-center gap-6 text-center md:text-left mb-6 md:mb-0 md:pr-10">
             <p className="font-bold tracking-widest text-lg uppercase">
               Beyond basics - essentials, sharpened to distinction.
             </p>
@@ -288,22 +288,22 @@ const HomePage = () => {
           </div>
 
           {/* IMAGES SECTION */}
-          <div className="flex flex-1 md:flex-[0.67] overflow-x-auto md:overflow-visible scrollbar-hide gap-5 justify-start md:justify-end items-center scroll-smooth">
+          <div className="flex flex-1 overflow-x-auto md:overflow-visible gap-5 justify-start md:justify-center items-center">
             {bannerProducts.map(({ imgPath, name }, i) => (
               <Link key={i} href="#" className="shrink-0">
-                <div className="flex items-center flex-col gap-6">
-                  <div className="w-40 rounded-lg overflow-hidden">
+                <div className="flex items-center flex-col gap-4">
+                  <div className="w-40 md:w-48 rounded-lg overflow-hidden">
+                    {" "}
+                    {/* Increased desktop size */}
                     <motion.img
-                      className="w-full object-cover"
+                      className="w-full h-40 md:h-48 object-cover"
                       src={`/assets/${imgPath}`}
-                      width={200}
-                      height={200}
                       alt={name}
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
                     />
                   </div>
-                  <p className="text-xl font-semibold whitespace-normal uppercase mt-6 tracking-wider text-center">
+                  <p className="text-lg md:text-xl font-semibold whitespace-normal uppercase tracking-wider text-center">
                     {name}
                   </p>
                 </div>

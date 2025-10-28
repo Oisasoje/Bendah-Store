@@ -19,6 +19,14 @@ main {
   flex: 1 0 auto;
 }
 
+@media screen and (max-device-width: 767px) {
+  .force-column {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   color: gray !important;

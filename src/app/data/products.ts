@@ -55,11 +55,7 @@ export const bannerProducts = [
 
     name: "Wrangler",
   },
-  {
-    imgPath: "Brown Sneakers.jpg",
 
-    name: "Louis Vuitton X Nike",
-  },
   {
     imgPath: "Black Lady in Blue Shirt.jpg",
 
