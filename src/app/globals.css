@@ -1,4 +1,15 @@
 @import "tailwindcss";
+
+html,
+body {
+  overflow-x: hidden;
+}
+body.overflow-hidden {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   color: gray !important;

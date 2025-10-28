@@ -85,7 +85,7 @@ const HomePage = () => {
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="absolute hover:cursor-zoom-out top-0 left-0 z-101 min-h-screen w-full bg-black/40"
+          className="absolute hover:cursor-zoom-out top-0 left-0 z-101 h-full w-full bg-black/40"
         />
       )}
 
@@ -95,7 +95,7 @@ const HomePage = () => {
         {/* ===== Categories ===== */}
         <section
           className="px-4 sm:px-6 md:px-10 mb-10 text-black 
-  flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide
+  flex gap-6 overflow-x-auto snap-x snap-mandatory 
   md:grid md:grid-cols-4 lg:grid-cols-6 md:gap-10 md:overflow-visible"
         >
           {categories.map(({ imgPath, category }, i) => (

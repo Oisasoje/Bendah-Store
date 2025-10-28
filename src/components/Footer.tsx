@@ -129,9 +129,15 @@ const Footer = () => {
       <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
         {/* Socials */}
         <div className="flex gap-5 text-gray-700">
-          <FaFacebook size={25} className="cursor-pointer hover:opacity-70" />
-          <FaXTwitter size={25} className="cursor-pointer hover:opacity-70" />
-          <FaInstagram size={25} className="cursor-pointer hover:opacity-70" />
+          <FaFacebook
+            size={25}
+            className="cursor-pointer hover:text-blue-500"
+          />
+          <FaXTwitter size={25} className="cursor-pointer" />
+          <FaInstagram
+            size={25}
+            className="cursor-pointer hover:text-purple-800"
+          />
         </div>
 
         {/* Copyright */}
