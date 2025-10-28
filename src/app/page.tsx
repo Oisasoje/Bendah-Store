@@ -28,7 +28,7 @@ import LazySwiper from "@/components/LazySwiper";
 import { FaBagShopping } from "react-icons/fa6";
 
 const nunito = Nunito({
-  weight: ["200", "300", "400", "600", "800", "1000"],
+  weight: ["400", "600"],
   subsets: ["latin"],
 });
 
