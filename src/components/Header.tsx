@@ -51,7 +51,7 @@ const Header = ({ setIsOpen }) => {
         <AnimatePresence>
           {menuOpen && (
             <motion.aside
-              className="md:hidden fixed pt-8 left-0 z-50 h-full top-0 w-full flex flex-col gap-4  font-semibold bg-white shadow-inner"
+              className="md:hidden fixed bottom-0 pt-8 left-0 z-151 h-full top-0 w-full flex flex-col gap-4  font-semibold bg-white shadow-inner"
               initial={{ x: "-100%" }}
               animate={{ x: "0%" }}
               exit={{ x: "-100%" }}
