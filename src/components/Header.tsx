@@ -18,6 +18,19 @@ const anton = Anton({
 const Header = ({ setIsOpen }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   useEffect(() => {
     let ticking = false;
 
@@ -35,6 +48,7 @@ const Header = ({ setIsOpen }) => {
     handleScroll(); // run once on mount (in case already scrolled)
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-149 w-full  bg-white transition-shadow duration-300 ${
@@ -51,7 +65,7 @@ const Header = ({ setIsOpen }) => {
         <AnimatePresence>
           {menuOpen && (
             <motion.aside
-              className="md:hidden fixed bottom-0 pt-8 left-0 z-151 h-full top-0 w-full flex flex-col gap-4  font-semibold bg-white shadow-inner"
+              className="md:hidden fixed bottom-0 pt-8 left-0 z-150  top-0 w-full flex flex-col gap-4   font-semibold bg-white shadow-inner"
               initial={{ x: "-100%" }}
               animate={{ x: "0%" }}
               exit={{ x: "-100%" }}
