@@ -88,7 +88,7 @@ const HomePage = () => {
 
   if (!isMounted) return null;
   return (
-    <div className="bg-white relative text-black min-h-screen w-full">
+    <div className="bg-white relative text-black min-h-100dvh  w-full">
       <AnimatePresence mode="wait">
         {isOpen && <Sidebar setIsOpen={setIsOpen} />}
       </AnimatePresence>
@@ -96,7 +96,7 @@ const HomePage = () => {
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="absolute hover:cursor-zoom-out top-0 left-0 z-101 h-full w-full bg-black/40"
+          className="absolute hover:cursor-zoom-out top-0 left-0 z-101 bottom-0 w-full bg-black/40"
         />
       )}
 

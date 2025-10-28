@@ -11,6 +11,8 @@ import { AnimatePresence, motion } from "framer-motion";
 const anton = Anton({
   weight: ["400"],
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const Header = ({ setIsOpen }) => {
@@ -35,7 +37,7 @@ const Header = ({ setIsOpen }) => {
   }, []);
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-1000 w-full  bg-white transition-shadow duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-149 w-full  bg-white transition-shadow duration-300 ${
         scrolled ? "shadow-md" : ""
       }`}
     >

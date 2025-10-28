@@ -30,7 +30,7 @@ const Sidebar = ({ setIsOpen }) => {
 
   return (
     <motion.aside
-      className="fixed text-black z-150 px-6 pt-5 py-8 bg-white top-0 right-0 h-screen md:w-7/20 w-full flex flex-col"
+      className="fixed text-black z-150 px-6 pt-5 py-8 bg-white top-0 right-0 bottom-0 md:w-7/20 w-full flex flex-col"
       initial={{ x: "100%" }}
       animate={{ x: "0%" }}
       exit={{ x: "100%" }}
