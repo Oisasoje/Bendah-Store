@@ -274,7 +274,7 @@ const HomePage = () => {
         </section>
 
         {/* ===== Banner Section ===== */}
-        <section className="bg-[#C4C4C3] py-5 flex flex-col md:flex-row h-auto md:h-63 w-full px-6 sm:px-10 mb-10 mt-9">
+        <section className="bg-[#C4C4C3] py-8 flex flex-col md:flex-row h-auto md:h-63 w-full px-6 sm:px-10 mb-10 mt-9">
           {/* TEXT SECTION */}
           <div className="flex flex-col flex-1 md:flex-[0.33] justify-center gap-6 text-center md:text-left mb-6 md:mb-0">
             <p className="font-bold tracking-widest text-lg uppercase">
@@ -516,8 +516,9 @@ const HomePage = () => {
           Secure Online Payment
         </p>
       </section>
-
-      <Footer />
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 };
